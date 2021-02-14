@@ -48,14 +48,14 @@ function App() {
         <div className="content">
           <ul className="products">
             {
-              products.map(product =>
+              data.products.map(product =>
                 <li>
                   <div className="product">   
                     <img className="product-image" src={product.image} alt="product"/>
                     <div className="product-name">
                       <a href="product.html">{product.name}</a>
                     </div>
-                    <div className="product-pricing">
+                    <div className="product-price">
                       {product.pricing}
                     </div>
                     <div className="product-score">
