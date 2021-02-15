@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import data from './data';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+import HomeScreen from './Screens/HomeScreen';
+import ProductScreen from './Screens/ProductScreen';
 
 function App() {
 
@@ -12,69 +14,57 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open");
   }
   return (
-    <div className="grid-container">
+    <BrowserRouter>
 
-      <header className="header">
-            <div className="brand">
-                <button onClick={openMenu}>
-                    &#9776;
-                </button>
-                <a href="index.html">GusGames</a>
-            </div>
-            <div className="header-links">
-                <a href="cart.html">Carrinho</a>
-                <a href="login.html">Login ou Cadastre-se</a>
-            </div>
-      </header>
+      <div className="grid-container">
 
-      <aside className="sidebar">
-        <h3>Categorías dos jogos</h3>
-        <button className="sidebar-close-button" onClick={closeMenu}>
-          x
-        </button>
-        <ul>
-          <li>
-            <a href="index.html">Ação</a>
-          </li>
-          <li>
-            <a href="index.html">Aventura</a>
-          </li>
-          <li>
-            <a href="index.html">Esporte</a>
-          </li>
-        </ul>
-      </aside>
-        
-      <main className="main">
-        <div className="content">
-          <ul className="products">
-            {
-              data.products.map(product =>
-                <li>
-                  <div className="product">   
-                    <img className="product-image" src={product.image} alt="product"/>
-                    <div className="product-name">
-                      <a href="product.html">{product.name}</a>
-                    </div>
-                    <div className="product-price">
-                      R$ {product.price}
-                    </div>
-                    <div className="product-score">
-                      {product.score}
-                    </div>
-                  </div>
-                </li>
-              )
-            }
+        <header className="header">
+              <div className="brand">
+                  <button onClick={openMenu}>
+                      &#9776;
+                  </button>
+                  <Link to="/">GusGames</Link>
+                  <a href="index.html">GusGames</a>
+              </div>
+              <div className="header-links">
+                  <a href="cart.html">Carrinho</a>
+                  <a href="login.html">Login ou Cadastre-se</a>
+              </div>
+        </header>
+
+        <aside className="sidebar">
+          <h3>Categorías dos jogos</h3>
+          <button className="sidebar-close-button" onClick={closeMenu}>
+            x
+          </button>
+          <ul>
+            <li>
+              <a href="index.html">Ação</a>
+            </li>
+            <li>
+              <a href="index.html">Aventura</a>
+            </li>
+            <li>
+              <a href="index.html">Esporte</a>
+            </li>
           </ul>
-        </div>   
-      </main>
+        </aside>
+          
+        <main className="main">
+          <div className="content">
+            <Route path="/products/:id" component={ProductScreen}/>
+            <Route path="/" exact={true} component={HomeScreen}/>
+            
+          </div>   
+        </main>
 
-      <footer className="footer">
-        Todos os direitos reservados.
-      </footer>
+        <footer className="footer">
+          Todos os direitos reservados.
+        </footer>
 
-    </div>
+      </div>
+
+    </BrowserRouter>
   );
 }
 
