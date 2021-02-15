@@ -1,5 +1,6 @@
+import React from 'react';
 import './App.css';
-import './data';
+import data from './data';
 
 function App() {
 
@@ -56,7 +57,7 @@ function App() {
                       <a href="product.html">{product.name}</a>
                     </div>
                     <div className="product-price">
-                      {product.pricing}
+                      R$ {product.price}
                     </div>
                     <div className="product-score">
                       {product.score}
